@@ -115,6 +115,8 @@ export default {
 						return envKey === 'URL302' ? Response.redirect(URL, 302) : fetch(new Request(URL, request));
 					}
 					return new Response(JSON.stringify(request.cf, null, 4), { status: 200 });
+				case '/check':
+					return new Response('ok', { status: 200 });
 				case `/${fakeUserID}`:
 					const fakeConfig = await getVLESSConfig(userID, request.headers.get('Host'), sub, 'CF-Workers-SUB', RproxyIP, url);
 					return new Response(`${fakeConfig}`, { status: 200 });
